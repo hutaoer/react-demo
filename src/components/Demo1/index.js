@@ -6,7 +6,7 @@ export default function Demo1(props) {
         <div>
             <h1>Demo1</h1>
             <button onClick={() => {
-              props.onClick(100);
+              props.onClick();
             }}>Click me</button>
         </div>
     )
