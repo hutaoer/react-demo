@@ -7,23 +7,33 @@ function App() {
   const [num, setNum] = useState(0);
   const handleClick = () => {
     console.log('handleClick is called')
-    setNum(2);
+    // setNum(num + 1);
     setCount(count + 1);
   }
   console.log('App is update')
-  const handleClick2 = useCallback(() => {
-    console.log('handleClick2 is called')
-    // setCount(count - 1);
-  }, [num])
 
   const num2 = useMemo(() => {
     console.log('num2 is called')
     return num * 2;
   }, [num])
+  const getNum = useMemo(() => {
+    console.log('getNum is called')
+    let number =  0;
+    for(let i=0;i<100000000;++i){
+        number = number +i-(number-i*1.1);
+    }
+    return number;
+  }, [num])
+
+  // const getNum = useMemo(() => {
+  //   console.log('getNum is called')
+  //   return num * 2;
+  // }, [num])
+
   return (
     <div className="App">
       <h1>Count: {count}</h1>
-      <h1>num: {num2}</h1>
+      <h1>num: {getNum}</h1>
       <Demo1 onClick={handleClick}/>
       <Demo2 num={num2}/>
     </div>
